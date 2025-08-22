@@ -1,0 +1,15 @@
+{
+  "name": "stfu.ink",
+  "version": "1.0.0",
+  "description": "A simple Express.js server to serve Lua scripts",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.12",
+    "express": "^4.18.2",
+    "body-parser": "^2.2.0",
+    "serve-favicon": "^2.5.0"
+  }
+}
