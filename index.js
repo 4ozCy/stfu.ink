@@ -18,7 +18,7 @@ app.get('/dc', (req, res) => {
   res.sendFile(path.join(__dirname, 'dc.html'));
 });
 
-app.get('/discord/.well-known', (req, res) => {
+app.get('/.well-known/discord', (req, res) => {
   res.send('dh=6cfeb553898f125458c3bcdf4404c84a7a412fe9')
 });
 
