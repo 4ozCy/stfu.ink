@@ -18,6 +18,10 @@ app.get('/dc', (req, res) => {
   res.sendFile(path.join(__dirname, 'dc.html'));
 });
 
+app.get('/discord/.well-known', (req, res) => {
+  res.send('dh=6cfeb553898f125458c3bcdf4404c84a7a412fe9')
+});
+
 app.get('/:file', (req, res) => {
   const fileName = req.params.file;
   const filePath = path.join(__dirname, fileName);
