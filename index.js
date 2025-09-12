@@ -21,17 +21,15 @@ app.get('/:file', (req, res) => {
   });
 });
 
-app.get('/quote', async (req, res) => {
+app.get('/q', (req, res) => {
   try {
-    const response = await fetch('https://api.quotable.io/random');
+    const response = await fetch('https://zenquotes.io/api/random');
     const data = await response.json();
-    res.json({ text: data.content, author: data.author });
-  } catch (err) {
+    const quote = data[0];
+    res.json({ text: quote.q, author: quote.a });
+  } catch {
     res.status(500).json({ text: 'Failed to fetch quote.', author: '' });
   }
 });
 
-app.listen(PORT, (err) => {
-  if (err) console.error('Error in server setup');
-  else console.log(`Server listening on Port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
