@@ -20,15 +20,16 @@ app.get('/:file', (req, res) => {
     if (err) res.status(404).sendFile(path.join(__dirname, '404.html'));
   });
 });
-app.get('/q', (req, res) => {
+app.get('/q', async (req, res) => {
   try {
     const response = await fetch('https://zenquotes.io/api/random');
     const data = await response.json();
-    const quote = data[0];
-    res.json({ text: quote.q, author: quote.a });
-  } catch {
+    res.json({ text: data[0].q, author: data[0].a });
+  } catch (err) {
     res.status(500).json({ text: 'Failed to fetch quote.', author: '' });
   }
 });
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
