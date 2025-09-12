@@ -11,15 +11,11 @@ app.use(bodyParser.json());
 app.use(favicon(path.join(__dirname, 'stfu.png')));
 
 app.get('/', (req, res) => {
-res.sendFile(path.join(__dirname, 'index.html'));
+res.sendFile(path.join(__dirname, '404.html'));
 });
 
 app.get('/dc', (req, res) => {
 res.sendFile(path.join(__dirname, 'dc.html'));
-});
-
-app.get('/.well-known/discord', (req, res) => {
-res.send('dh=6cfeb553898f125458c3bcdf4404c84a7a412fe9')
 });
 
 app.get('/:file', (req, res) => {
