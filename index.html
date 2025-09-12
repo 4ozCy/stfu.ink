@@ -60,7 +60,7 @@
       const authorEl = document.getElementById('author');
 
       try {
-        const res = await fetch('/');
+        const res = await fetch('/quote');
         const data = await res.json();
         quoteEl.textContent = `"${data.text}"`;
         authorEl.textContent = data.author ? `— ${data.author}` : '';
