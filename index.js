@@ -20,7 +20,6 @@ app.get('/:file', (req, res) => {
     if (err) res.status(404).sendFile(path.join(__dirname, '404.html'));
   });
 });
-
 app.get('/q', (req, res) => {
   try {
     const response = await fetch('https://zenquotes.io/api/random');
