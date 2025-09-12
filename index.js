@@ -18,18 +18,6 @@ app.get('/dc', (req, res) => {
 res.sendFile(path.join(__dirname, 'dc.html'));
 });
 
-app.get('/:file', (req, res) => {
-const fileName = req.params.file;
-const filePath = path.join(__dirname, fileName);
-
-res.sendFile(filePath, (err) => {
-if (err) {
-const notFoundPath = path.join(__dirname, '404.html');
-res.status(404).sendFile(notFoundPath);
-}
-});
-});
-
 app.listen(PORT, (err) => {
 if (err) {
 console.error('Error in server setup');
