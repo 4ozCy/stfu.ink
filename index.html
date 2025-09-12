@@ -56,27 +56,21 @@
   </div>
 
   <script>
-  async function showQuote() {
-    const container = document.getElementById('quote-container');
-    const quoteEl = document.getElementById('quote');
-    const authorEl = document.getElementById('author');
-
-    try {
-      const res = await fetch('/q'); // fetch from your backend
-      const data = await res.json();
-      quoteEl.textContent = `"${data.text}"`;
-      authorEl.textContent = data.author ? `— ${data.author}` : '';
-    } catch {
-      quoteEl.textContent = "Failed to fetch quote.";
-      authorEl.textContent = "";
+    async function fetchQuote() {
+      try {
+        const response = await fetch('/q');
+        const data = await response.json();
+        document.getElementById('quote').textContent = `"${data.text}"`;
+        document.getElementById('author').textContent = `— ${data.author}`;
+        document.getElementById('quote-container').style.opacity = 1;
+      } catch (err) {
+        document.getElementById('quote').textContent = 'Failed to fetch quote.';
+        document.getElementById('author').textContent = '';
+      }
     }
 
-    container.style.opacity = 1;
-    setTimeout(() => {
-      container.style.opacity = 0;
-      setTimeout(showQuote, 1000);
-    }, 5000);
-  }
-
-  showQuote();
+    fetchQuote();
+    setInterval(fetchQuote, 5000);
   </script>
+</body>
+</html>
